@@ -32,7 +32,7 @@
 		"startup": "{\r\n\"done\": \"Status: Ready\"\r\n}",
 		"logs": "{\r\n\"custom\": false,\r\n\"location\": \"\/home\/container\/main.log\"\r\n}",
 		"stop": "stop"
-	}
+	},
 	"variables": [
 		{
 			"name": "Server name",
