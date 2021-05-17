@@ -16,5 +16,5 @@ ENV HOME /home/container
 WORKDIR /home/container
 
 COPY ./entrypoint.sh /entrypoint.sh
-COPY ../minecraft-pi-reborn/minecraft-pi /home/container
+COPY ./minecraft-pi-reborn/minecraft-pi /home/container
 CMD ["/bin/bash", "/entrypoint.sh"]
