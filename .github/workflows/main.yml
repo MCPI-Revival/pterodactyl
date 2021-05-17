@@ -9,6 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Install QEMU
+      run: sudo apt-get install qemu binfmt-support qemu-user-static
+    - name: Enable multi-arch support
+      run: docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
     - name: Build MCPI-Reborn
       run: ./build.sh
     - name: Build the Docker image
