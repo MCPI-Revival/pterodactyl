@@ -32,14 +32,7 @@
 		"startup": "{\r\n\"done\": \"Status: Ready\"\r\n}",
 		"logs": "{\r\n\"custom\": false,\r\n\"location\": \"\/home\/container\/main.log\"\r\n}",
 		"stop": "stop"
-	},
-	"scripts": {
-		"installation": {
-			"script": "#!\/usr\/bin\/bash\r\ncd $HOME\r\necho \"No installation needed here :P\"",
-			"container": "ghcr.io\/mcpi-revival\/pterodactyl:v1",
-			"entrypoint": "bash"
-		}
-	},
+	}
 	"variables": [
 		{
 			"name": "Server name",

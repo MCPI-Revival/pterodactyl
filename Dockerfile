@@ -10,8 +10,7 @@ RUN useradd -m -d /home/container container
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y --no-install-recommends libgles1 libx11-6 zlib1g libfreeimage3 libglfw3 xinput libxfixes3
 RUN apt clean && rm -rf /var/lib/apt/lists/*
-RUN mkdir -p /mnt/install/
-RUN chown -R container:container /mnt/
+RUN mkdir -p /mnt/install/ && mkdir -p /mnt/server/ && chown -R container:container /mnt/
 
 USER container
 ENV HOME /home/container
