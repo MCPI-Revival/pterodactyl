@@ -1,0 +1,126 @@
+{
+	"meta": {
+		"version": "PTDL_v1",
+		"update_url": null
+	},
+	"name": "MCPI-Reborn",
+	"author": "donfrutosgomez@gmail.com",
+	"description": "Minecraft Pi Reborn server",
+	"features": null,
+	"images": [
+		"ghcr.io\/mcpi-revival\/pterodactyl:v1"
+	],
+	"file_denylist": [],
+	"server.properties": {
+		"parser": "properties",
+		"find": {
+			"motd": "{{env.MCPIRS_MOTD}}",
+			"show-minecon-badge": "{{env.MCPIRS_SMB}}",
+			"game-mode": "{{env.MCPIRS_GM}}",
+			"seed": "{{env.MCPIRS_SEED}}",
+			"mob-spawning": "{{env.MCPIRS_MS}}",
+			"peaceful-mode": "{{env.MCPIRS_PM}}",
+			"world-name": "{{env.MCPIRS_WN}}",
+			"max-players": "{{env.MCPIRS_MP}}",
+			"whitelist": "{{env.MCPIRS_WL}}",
+			"port": "{{server.build.default.port}}"
+		}
+	},
+	"startup": "\/usr\/bin\/bash \/mnt/\/server\/run.sh",
+	"config": {
+		"files": "{\"motd\":\"{{server.build.env.MCPIRS_MOTD}}\",\"show-minecon-badge\":\"{{server.build.env.MCPIRS_SMB}}\",\"game-mode\":\"{{server.build.env.MCPIRS_GM}}\",\"seed\":\"{{server.build.env.MCPIRS_SEED}}\",\"mob-spawning\":\"{{server.build.env.MCPIRS_MS}}\",\"peaceful-mode\":\"{{server.build.env.MCPIRS_PM}}\",\"world-name\":\"{{server.build.env.MCPIRS_WN}}\",\"max-players\":\"{{server.build.env.MCPIRS_MP}}\",\"whitelist\":\"{{server.build.env.MCPIRS_WL}}\",\"port\":\"{{server.build.default.port}}\"}",
+		"startup": "{\r\n\"done\": \"Status: Ready\"\r\n}",
+		"logs": "{\r\n\"custom\": false,\r\n\"location\": \"\/mnt\/server\/main.log\"\r\n}",
+		"stop": "stop"
+	},
+	"scripts": {
+		"installation": {
+			"script": "#!\/usr\/bin\/bash\r\ncd $HOME\r\necho \"No installation needed here :P\"",
+			"container": "ghcr.io\/mcpi-revival\/pterodactyl:v1",
+			"entrypoint": "bash"
+		}
+	},
+	"variables": [
+		{
+			"name": "Server name",
+			"description": "",
+			"env_variable": "MCPIRS_MOTD",
+			"default_value": "Minecraft Server",
+			"user_viewable": true,
+			"user_editable": true,
+			"rules": "required|string"
+		},
+		{
+			"name": "Show MINECON badge?",
+			"description": "",
+			"env_variable": "MCPIRS_SMB",
+			"default_value": "false",
+			"user_viewable": true,
+			"user_editable": true,
+			"rules": "required|string|in:true,false"
+		},
+		{
+			"name": "Game mode",
+			"description": "0 == Survival, 1 == Creative",
+			"env_variable": "MCPIRS_GM",
+			"default_value": "0",
+			"user_viewable": true,
+			"user_editable": true,
+			"rules": "required|string|in:0,1"
+		},
+		{
+			"name": "World seed",
+			"description": "",
+			"env_variable": "MCPIRS_SEED",
+			"default_value": "",
+			"user_viewable": true,
+			"user_editable": true,
+			"rules": "required|string"
+		},
+		{
+			"name": "Spawn mobs?",
+			"description": "",
+			"env_variable": "MCPIRS_MS",
+			"default_value": "true",
+			"user_viewable": true,
+			"user_editable": true,
+			"rules": "required|string|in:true,false"
+		},
+		{
+			"name": "Enable peaceful mode?",
+			"description": "",
+			"env_variable": "MCPIRS_PM",
+			"default_value": "false",
+			"user_viewable": true,
+			"user_editable": true,
+			"rules": "required|string|in:true,false"
+		},
+		{
+			"name": "World name",
+			"description": "",
+			"env_variable": "MCPIRS_WN",
+			"default_value": "world",
+			"user_viewable": true,
+			"user_editable": true,
+			"rules": "required|string"
+		},
+		{
+			"name": "Maximum of players",
+			"description": "",
+			"env_variable": "MCPIRS_MP",
+			"default_value": "5",
+			"user_viewable": true,
+			"user_editable": true,
+			"rules": "required|string|between:1,50"
+		},
+		{
+			"name": "Whitelisted server?",
+			"description": "",
+			"env_variable": "MCPIRS_WL",
+			"default_value": "false",
+			"user_viewable": true,
+			"user_editable": true,
+			"rules": "required|string|in:true,false"
+		}
+	]
+}

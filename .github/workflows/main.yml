@@ -1,0 +1,19 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build MCPI-Reborn
+      run: ./build.sh
+    - name: Build the Docker image
+      run: cd ./image/ && docker build . --file Dockerfile --tag ghcr.io/mcpi-revival/pterodactyl:v1
+    - name: Login to the container registry
+      run: echo $GITHUB_TOKEN | docker login ghcr.io -u Alvarito050506 --password-stdin
+    - name: Push to the registry
+      run: docker push ghcr.io/mcpi-revival/pterodactyl:v1
